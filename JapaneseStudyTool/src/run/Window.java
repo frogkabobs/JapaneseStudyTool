@@ -5,6 +5,9 @@ import java.awt.Dimension;
 import java.awt.FlowLayout;
 import javax.swing.JFrame;
 
+import backbone.Term;
+import gui.TermButton;
+
 /**
  * 
  * @author QuincyJohnson
@@ -36,7 +39,9 @@ public class Window extends JFrame{
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		getContentPane().setBackground(BACKGROUND_COLOR);
 		setForeground(FOREGROUND_COLOR);
-	
+		add(new TermButton(new Term("happy","e")));
+		add(new TermButton(new Term("happy","e")));
+		add(new TermButton(new Term("happy","e")));
 		//addKeyListener(ds.gameplay.listener);
 		setVisible(true);
 		//pack();

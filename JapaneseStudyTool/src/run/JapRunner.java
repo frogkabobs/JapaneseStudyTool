@@ -2,9 +2,9 @@ package run;
 
 import javax.swing.JApplet;
 
+@SuppressWarnings("serial")
 public class JapRunner extends JApplet {
 
-	private static final long serialVersionUID = 1L;
 	
 
 	public JapRunner() {
