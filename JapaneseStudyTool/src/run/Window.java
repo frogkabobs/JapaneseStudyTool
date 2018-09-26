@@ -6,6 +6,8 @@ import java.awt.FlowLayout;
 import javax.swing.JFrame;
 
 import backbone.Term;
+import backbone.TermsList;
+import gui.SearchBar;
 import gui.SearchPanel;
 import gui.TermButton;
 
@@ -16,8 +18,8 @@ import gui.TermButton;
  */
 public class Window extends JFrame{
 	private static final long serialVersionUID = 1L;
-	public static final Dimension SCREEN_SIZE = new Dimension(1270, 662);
-	public static final Dimension GAME_SIZE = new Dimension(1270, 662);
+	public static final Dimension SCREEN_SIZE = new Dimension(1270, 720);
+	public static final Dimension GAME_SIZE = new Dimension(1270, 720);
 	public static final String TITLE = "Jacob's Japanese Quiz v1.0.0";
 	public static final Color BACKGROUND_COLOR = Color.BLACK;
 	public static final Color FOREGROUND_COLOR = Color.WHITE;
@@ -40,9 +42,10 @@ public class Window extends JFrame{
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		getContentPane().setBackground(BACKGROUND_COLOR);
 		setForeground(FOREGROUND_COLOR);
-		
-		add(new SearchPanel(700,600,new TermButton(new Term("happy","e")),new TermButton(new Term("happy","e")),new TermButton(new Term("happy","e")),new TermButton(new Term("happy","e")),new TermButton(new Term("happy","e")),new TermButton(new Term("happy","e")),new TermButton(new Term("happy","e")),new TermButton(new Term("happy","e")),new TermButton(new Term("happy","e")),new TermButton(new Term("happy","e")),new TermButton(new Term("happy","e")),new TermButton(new Term("happy","e")),new TermButton(new Term("happy","e")),new TermButton(new Term("happy","e")),new TermButton(new Term("happy","e")),new TermButton(new Term("happy","e")),new TermButton(new Term("happy","e")),new TermButton(new Term("happy","e")),new TermButton(new Term("happy","e")),new TermButton(new Term("happy","e")),new TermButton(new Term("happy","e")),new TermButton(new Term("happy","e")),new TermButton(new Term("happy","e")),new TermButton(new Term("happy","e")),new TermButton(new Term("happy","e")),new TermButton(new Term("happy","e")),new TermButton(new Term("happy","e")),new TermButton(new Term("happy","e")),new TermButton(new Term("happy","e")),new TermButton(new Term("happy","e")),new TermButton(new Term("happy","e")),new TermButton(new Term("happy","e")),new TermButton(new Term("happy","e")),new TermButton(new Term("happy","e")),new TermButton(new Term("happy","e")),new TermButton(new Term("happy","e")),new TermButton(new Term("happy","e")),new TermButton(new Term("happy","e")),new TermButton(new Term("happy","e")),new TermButton(new Term("happy","e")),new TermButton(new Term("happy","e")),new TermButton(new Term("happy","e"))));
-		//addKeyListener(ds.gameplay.listener);
+		//add searchbar first. add searchabr functionality
+		SearchPanel sp = new SearchPanel(1265,720, new TermsList(new Term("HEY", "AAAAA", "Tag", "john", "god"), new Term("AAAAAAAAA", "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA", "boy", "kid"), new Term("d", "d", "boy"), new Term("s", "s", "kid")));
+		add(new SearchBar(1270, 40,sp));
+		add(sp);
 		setVisible(true);
 		//pack();
 		

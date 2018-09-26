@@ -16,5 +16,13 @@ public class TermsList implements Serializable {
 	public TermsList(Term... t) {
 		terms = new SortedList<>(FXCollections.observableArrayList(t), (u,v) -> Comparator.comparing(String::toString).compare(u.term, v.term));
 	}
+	
+	public TermsList(SortedList<Term> t) {
+		terms = t;
+	}
+	
+	public void sort(Comparator c) {
+		terms.setComparator(c);
+	}
 
 }
