@@ -6,6 +6,7 @@ import java.awt.FlowLayout;
 import javax.swing.JFrame;
 
 import backbone.Term;
+import gui.SearchPanel;
 import gui.TermButton;
 
 /**
@@ -39,9 +40,8 @@ public class Window extends JFrame{
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		getContentPane().setBackground(BACKGROUND_COLOR);
 		setForeground(FOREGROUND_COLOR);
-		add(new TermButton(new Term("happy","e")));
-		add(new TermButton(new Term("happy","e")));
-		add(new TermButton(new Term("happy","e")));
+		
+		add(new SearchPanel(700,600,new TermButton(new Term("happy","e")),new TermButton(new Term("happy","e")),new TermButton(new Term("happy","e")),new TermButton(new Term("happy","e")),new TermButton(new Term("happy","e")),new TermButton(new Term("happy","e")),new TermButton(new Term("happy","e")),new TermButton(new Term("happy","e")),new TermButton(new Term("happy","e")),new TermButton(new Term("happy","e")),new TermButton(new Term("happy","e")),new TermButton(new Term("happy","e")),new TermButton(new Term("happy","e")),new TermButton(new Term("happy","e")),new TermButton(new Term("happy","e")),new TermButton(new Term("happy","e")),new TermButton(new Term("happy","e")),new TermButton(new Term("happy","e")),new TermButton(new Term("happy","e")),new TermButton(new Term("happy","e")),new TermButton(new Term("happy","e")),new TermButton(new Term("happy","e")),new TermButton(new Term("happy","e")),new TermButton(new Term("happy","e")),new TermButton(new Term("happy","e")),new TermButton(new Term("happy","e")),new TermButton(new Term("happy","e")),new TermButton(new Term("happy","e")),new TermButton(new Term("happy","e")),new TermButton(new Term("happy","e")),new TermButton(new Term("happy","e")),new TermButton(new Term("happy","e")),new TermButton(new Term("happy","e")),new TermButton(new Term("happy","e")),new TermButton(new Term("happy","e")),new TermButton(new Term("happy","e")),new TermButton(new Term("happy","e")),new TermButton(new Term("happy","e")),new TermButton(new Term("happy","e")),new TermButton(new Term("happy","e")),new TermButton(new Term("happy","e")),new TermButton(new Term("happy","e"))));
 		//addKeyListener(ds.gameplay.listener);
 		setVisible(true);
 		//pack();
