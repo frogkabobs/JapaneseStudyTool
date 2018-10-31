@@ -20,5 +20,9 @@ public class Term {
 		type = ty;
 	}
 	
+	public String toString() {
+		return term + "\n" + description + "\n\nTags: " + String.join(", ", tags);
+	}
+	
 	
 }

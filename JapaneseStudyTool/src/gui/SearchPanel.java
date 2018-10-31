@@ -47,7 +47,7 @@ public class SearchPanel extends JPanel{
 		int count = 0;
 		int vpHeight = h-30;
 		for(Term term : t.terms) {
-			viewport.add(new TermButton(term));
+			viewport.add(new TermBox(term));
 			count++;
 			if(count > max) {
 				vpHeight += 55;
@@ -65,7 +65,7 @@ public class SearchPanel extends JPanel{
 		int count = 0;
 		int vpHeight = height-30;
 		for(Term term : visibleTerms.terms) {
-			viewport.add(new TermButton(term));
+			viewport.add(new TermBox(term));
 			count++;
 			if(count > max) {
 				vpHeight += 55;

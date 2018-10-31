@@ -8,16 +8,17 @@ import javax.swing.border.BevelBorder;
 
 import backbone.Term;
 
-public class TermButton extends JTextArea{
+public class TermBox extends JTextArea{
 	public boolean added;
 	public Term term;
 	
-	public TermButton(Term t) {
+	public TermBox(Term t) {
 		setLineWrap(true);
+		setWrapStyleWord(true);
 		setColumns(1200/getColumnWidth());
 		term = t;
 		added = false;
-		setText(term.term + "\n" + term.description + "\n\nTags: " + String.join(",", term.tags));
+		setText(term.toString());
 		//setPreferredSize(new Dimension(300,50));
 		setBackground(Color.BLACK);
 		setForeground(Color.WHITE);
@@ -26,12 +27,13 @@ public class TermButton extends JTextArea{
 		
 	}
 	
-	public TermButton(Term t, int w, int h) {
+	public TermBox(Term t, int w, int h) {
 		setLineWrap(true);
+		setWrapStyleWord(true);
 		setColumns(1200/getColumnWidth());
 		term = t;
 		added = false;
-		setText(term.term + "\n" + term.description + "\n\nTags: " + String.join(",", term.tags));
+		setText(term.toString());
 		//setPreferredSize(new Dimension(w,h));
 		setBackground(Color.BLACK);
 		setForeground(Color.WHITE);

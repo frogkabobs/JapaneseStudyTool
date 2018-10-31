@@ -4,12 +4,14 @@ import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
 import javax.swing.JFrame;
+import javax.swing.SwingUtilities;
 
+import Test.Tester;
 import backbone.Term;
 import backbone.TermsList;
 import gui.SearchBar;
 import gui.SearchPanel;
-import gui.TermButton;
+import gui.TitleScreen;
 
 /**
  * 
@@ -25,6 +27,8 @@ public class Window extends JFrame{
 	public static final Color FOREGROUND_COLOR = Color.WHITE;
 	public static FlowLayout layout;
 	public static boolean isRunning = false;
+
+	TitleScreen ts = new TitleScreen(1270, 720);
 	
 	public Window() {
 		init();
@@ -43,11 +47,23 @@ public class Window extends JFrame{
 		getContentPane().setBackground(BACKGROUND_COLOR);
 		setForeground(FOREGROUND_COLOR);
 		//add searchbar first. add searchabr functionality
-		SearchPanel sp = new SearchPanel(1265,720, new TermsList(new Term("HEY", "AAAAA", "Tag", "john", "god"), new Term("AAAAAAAAA", "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA", "boy", "kid"), new Term("d", "d", "boy"), new Term("s", "s", "kid")));
+		SearchPanel sp = Tester.sPanel();
+		Window w = this;
+		add(ts);
 		add(new SearchBar(1270, 40,sp));
 		add(sp);
+		ts.termSearch.addActionListener(u -> {
+			rem();
+		});
+		
 		setVisible(true);
 		//pack();
+	}
+	
+	public void rem() {
+		getContentPane().remove(ts);
+		revalidate();
+		repaint();
 		
 	}
 }
