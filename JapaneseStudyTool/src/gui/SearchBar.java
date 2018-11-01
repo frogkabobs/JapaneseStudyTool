@@ -62,7 +62,7 @@ public class SearchBar extends JTextArea {
 	     
 	    // Break out all of the parts of the search text 
 	    // by splitting on white space
-	    String[] parts = newSearchTerm.toUpperCase().split(", ");
+	    String[] parts = newSearchTerm.toUpperCase().split(", *");
 	 
 	    // Filter out the entries that don't contain the entered text
 	    ArrayList<Term> subentries = new ArrayList<>();

@@ -3,6 +3,13 @@ package run;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.util.ArrayList;
+import java.util.stream.Stream;
+
 import javax.swing.JFrame;
 import javax.swing.SwingUtilities;
 
@@ -12,6 +19,8 @@ import backbone.TermsList;
 import gui.SearchBar;
 import gui.SearchPanel;
 import gui.TitleScreen;
+import javafx.scene.media.Media;
+import javafx.scene.media.MediaPlayer;
 
 /**
  * 
@@ -27,10 +36,14 @@ public class Window extends JFrame{
 	public static final Color FOREGROUND_COLOR = Color.WHITE;
 	public static FlowLayout layout;
 	public static boolean isRunning = false;
+	public ArrayList<MediaPlayer> songs = new ArrayList<>();
+	public int index = 0;
 
+	//add song player class
 	TitleScreen ts = new TitleScreen(1270, 720);
 	
 	public Window() {
+		songLoad();
 		init();
 	}
 	
@@ -48,7 +61,6 @@ public class Window extends JFrame{
 		setForeground(FOREGROUND_COLOR);
 		//add searchbar first. add searchabr functionality
 		SearchPanel sp = Tester.sPanel();
-		Window w = this;
 		add(ts);
 		add(new SearchBar(1270, 40,sp));
 		add(sp);
@@ -65,5 +77,21 @@ public class Window extends JFrame{
 		revalidate();
 		repaint();
 		
+	}
+	
+	public void songLoad() {
+		try (Stream<Path> paths = Files.walk(Paths.get("Files"))) {
+		    paths.filter(Files::isRegularFile).forEach(u -> songs.add(new MediaPlayer(new Media(u.toUri().toString()))));
+		} catch(IOException e) {
+			e.printStackTrace();
+		}
+		for(MediaPlayer mp : songs) {
+			mp.setCycleCount(MediaPlayer.INDEFINITE);
+			mp.setOnRepeat(() -> {
+				mp.pause();
+				songs.get(index = ++index % songs.size()).play();
+			});
+		}
+		songs.get(0).play();
 	}
 }
