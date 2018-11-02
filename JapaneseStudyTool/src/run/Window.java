@@ -1,8 +1,11 @@
 package run;
 
 import java.awt.Color;
+import java.awt.Component;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -14,11 +17,14 @@ import javax.swing.JFrame;
 import javax.swing.SwingUtilities;
 
 import Test.Tester;
+import backbone.Flashcard;
 import backbone.Term;
 import backbone.TermsList;
 import gui.SearchBar;
 import gui.SearchPanel;
+import gui.TermBox;
 import gui.TitleScreen;
+import gui.WrapperPanel;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
 
@@ -38,7 +44,7 @@ public class Window extends JFrame{
 	public static boolean isRunning = false;
 	public ArrayList<MediaPlayer> songs = new ArrayList<>();
 	public int index = 0;
-
+	public TermsList flashcards/* = new ArrayList<>()*/;
 	//add song player class
 	TitleScreen ts = new TitleScreen(1270, 720);
 	
@@ -61,22 +67,70 @@ public class Window extends JFrame{
 		setForeground(FOREGROUND_COLOR);
 		//add searchbar first. add searchabr functionality
 		SearchPanel sp = Tester.sPanel();
+		flashcards = new TermsList(Tester.flashcards());
+		SearchPanel fp = new SearchPanel(1265, 720, flashcards, false);
 		add(ts);
-		add(new SearchBar(1270, 40,sp));
-		add(sp);
+		//add(new SearchBar(1270, 40,sp));
+		//add(sp);
+		//add(fp);
+		sp.setEnabled(false);
+		fp.setEnabled(false);
 		ts.termSearch.addActionListener(u -> {
-			rem();
+			reorder(sp);
 		});
 		
+		ts.flashcards.addActionListener(u -> {
+			reorder(fp);
+		});
+		for(TermBox tb : fp.boxes) {
+			tb.addMouseListener(new MouseListener() {
+				@Override
+				public void mouseClicked(MouseEvent arg0) {
+					reorder(new SearchPanel(1265, 720, ((Flashcard)tb.term).terms, true));
+					
+				}
+				@Override
+				public void mouseEntered(MouseEvent arg0) {
+					// TODO Auto-generated method stub
+					
+				}
+				@Override
+				public void mouseExited(MouseEvent arg0) {
+					// TODO Auto-generated method stub
+					
+				}
+				@Override
+				public void mousePressed(MouseEvent arg0) {
+					// TODO Auto-generated method stub
+					
+				}
+				@Override
+				public void mouseReleased(MouseEvent arg0) {
+					// TODO Auto-generated method stub
+					
+				}
+				
+			});
+		}
 		setVisible(true);
 		//pack();
 	}
 	
-	public void rem() {
+	public void rem() { //remove
 		getContentPane().remove(ts);
 		revalidate();
 		repaint();
 		
+	}
+	
+	public void reorder(Component c) {
+		c.setEnabled(true);
+		Component comp = getContentPane().getComponents()[0];
+		getContentPane().remove(comp);
+		add(c);
+		comp.setEnabled(false);
+		revalidate();
+		repaint();
 	}
 	
 	public void songLoad() {

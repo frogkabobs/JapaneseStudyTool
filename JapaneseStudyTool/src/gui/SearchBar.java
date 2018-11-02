@@ -8,7 +8,6 @@ import java.util.ArrayList;
 import javax.swing.JTextArea;
 import javax.swing.event.DocumentEvent;
 import javax.swing.event.DocumentListener;
-import javax.swing.text.Document;
 
 import backbone.Term;
 import javafx.collections.FXCollections;
@@ -17,7 +16,6 @@ import javafx.collections.transformation.SortedList;
 public class SearchBar extends JTextArea {
 
 	public SearchPanel search;
-	private String searchTerm = "";
 	
 	public SearchBar(int w, int h, SearchPanel sp) {
 		// TODO Auto-generated constructor stub

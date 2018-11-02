@@ -24,5 +24,9 @@ public class TermsList implements Serializable {
 	public void sort(Comparator c) {
 		terms.setComparator(c);
 	}
+	
+	public void add(Term... t) {
+		terms.addAll(t);
+	}
 
 }

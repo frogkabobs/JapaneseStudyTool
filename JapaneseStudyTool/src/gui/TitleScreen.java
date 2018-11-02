@@ -9,7 +9,7 @@ import java.awt.Graphics;
 import javax.swing.JButton;
 import javax.swing.JPanel;
 
-public class TitleScreen extends JPanel{
+public class TitleScreen extends WrapperPanel{
 
 	public JButton termSearch;
 	public JButton flashcards;

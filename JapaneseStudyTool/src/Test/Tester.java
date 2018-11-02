@@ -1,5 +1,6 @@
 package Test;
 
+import backbone.Flashcard;
 import backbone.Term;
 import backbone.TermsList;
 import gui.SearchPanel;
@@ -23,6 +24,10 @@ public class Tester {
 				new Term("V-いたい", "Expresses the subject's desire to do something (V).", "want", "desire", "wish", "others", "[O]Verb", "[O]Verb-い", "[F]い-Adjective"),
 				new Term("Vまい/V-いまい","Means \"will not or must not do something (V)\". Negative volitional form. Can be used to express the speaker's strong desire not to do something when the speaker is the subject.", "wish", "desire", "want", "prohibition", "don't", "negative", "volitional", "[O]Verb"),
 				new Term("V-てはいけない", "Means \"you can't do something (V)\".", "negative", "prohibition", "don't", "[O]Verb-て", "[F]い-Adjective"),
-				new Term("V-てください", "Means \"please do something (V)\". Negative て form can be used to as someone to not do something.", "request", "negative", "prohibition", "don't", "[O]Verb-て", "[F]Verb-い")));
+				new Term("V-てください", "Means \"please do something (V)\". Negative て form can be used to as someone to not do something.", "request", "negative", "prohibition", "don't", "[O]Verb-て", "[F]Verb-い")), true);
+	}
+	
+	public static Term[] flashcards() {
+		return new Term[]{new Flashcard("Expressions of desire", "Grammar expressions of desire", "desire")};
 	}
 }
