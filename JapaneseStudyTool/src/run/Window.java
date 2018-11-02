@@ -23,6 +23,7 @@ import backbone.TermsList;
 import gui.SearchBar;
 import gui.SearchPanel;
 import gui.TermBox;
+import gui.TermBoxWrapper;
 import gui.TitleScreen;
 import gui.WrapperPanel;
 import javafx.scene.media.Media;
@@ -82,11 +83,11 @@ public class Window extends JFrame{
 		ts.flashcards.addActionListener(u -> {
 			reorder(fp);
 		});
-		for(TermBox tb : fp.boxes) {
+		for(TermBoxWrapper tb : fp.boxes) {
 			tb.addMouseListener(new MouseListener() {
 				@Override
 				public void mouseClicked(MouseEvent arg0) {
-					reorder(new SearchPanel(1265, 720, ((Flashcard)tb.term).terms, true));
+					reorder(new SearchPanel(1265, 720, ((Flashcard)tb.termBox.term).terms, true));
 					
 				}
 				@Override
@@ -112,6 +113,17 @@ public class Window extends JFrame{
 				
 			});
 		}
+		sp.addToFlashcards.addActionListener(u -> {
+			reorder(fp);
+			fp.addToFlashcards.addActionListener(v->{
+				for(TermBoxWrapper tbw : sp.boxes) {
+					for(TermBoxWrapper tb : fp.boxes) {
+						((Flashcard)tb.termBox.term).terms.add(tbw.termBox.term);
+					}
+				}
+				reorder(sp);
+			});
+		});
 		setVisible(true);
 		//pack();
 	}

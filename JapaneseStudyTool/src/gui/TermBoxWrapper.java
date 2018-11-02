@@ -8,7 +8,7 @@ import javax.swing.JPanel;
 
 
 public class TermBoxWrapper extends JPanel {
-	TermBox termBox;
+	public TermBox termBox;
 	Checkbox checkBox; //change to javafx
 	
 	public TermBoxWrapper(TermBox tb, Checkbox cb) {

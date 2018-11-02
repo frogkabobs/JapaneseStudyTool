@@ -21,7 +21,7 @@ public class SearchPanel extends WrapperPanel{
 	final TermsList terms;
 	//add searchbar in here
 	public TermsList visibleTerms;
-	public ArrayList<TermBox> boxes = new ArrayList<>();
+	public ArrayList<TermBoxWrapper> boxes = new ArrayList<>();
 	private int height,width;
 	boolean checkboxes; ///get rid of this
 	public JButton addToFlashcards;
@@ -54,8 +54,8 @@ public class SearchPanel extends WrapperPanel{
 		int count = 0;
 		int vpHeight = h-100;
 		for(Term term : t.terms) {
-			TermBox tb = new TermBox(term);
-			viewport.add(new TermBoxWrapper(tb, new Checkbox()));
+			TermBoxWrapper tb = new TermBoxWrapper(new TermBox(term), new Checkbox());
+			viewport.add(tb);
 			boxes.add(tb);
 			count++;
 			if(count > max) { //fix this whole max thing
@@ -75,8 +75,8 @@ public class SearchPanel extends WrapperPanel{
 		int count = 0;
 		int vpHeight = height-100;
 		for(Term term : visibleTerms.terms) {
-			TermBox tb = new TermBox(term);
-			viewport.add(new TermBoxWrapper(tb, new Checkbox()));
+			TermBoxWrapper tb = new TermBoxWrapper(new TermBox(term), new Checkbox());
+			viewport.add(tb);
 			boxes.add(tb);
 			count++;
 			if(count > max) {
